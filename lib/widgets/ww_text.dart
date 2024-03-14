@@ -39,7 +39,7 @@ class WWText extends StatelessWidget {
       this.maxLines,
       this.overflow,
       required this.textSize,
-      this.textColor,
+      this.textColor = Colors.white,
       this.textDecoration = TextDecoration.none,
       this.height});
 

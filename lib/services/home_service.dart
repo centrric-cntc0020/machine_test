@@ -8,7 +8,7 @@ import 'package:machine_test/utils/services/http_services.dart';
 abstract class IHomeService {
   Future<Either<Map<MainFailure, dynamic>, dynamic>> getTvShowsAllServiceApi();
 
-  Future<Either<Map<MainFailure, dynamic>, dynamic>> getCastServiceApi();
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> getCastServiceApi(int id);
 }
 
 @LazySingleton(as: IHomeService)
@@ -29,13 +29,14 @@ class HomeService implements IHomeService {
   }
 
   @override
-  Future<Either<Map<MainFailure, dynamic>, dynamic>> getCastServiceApi() async {
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> getCastServiceApi(
+      int id) async {
     final res = await httpService.request(
       authenticated: false,
       showErrorToast: true,
       method: HttpMethods.get,
       apiCaching: true,
-      apiUrl: ApiEndPoints.endPCast,
+      apiUrl: '${ApiEndPoints.endPgetAllShows}/$id/cast',
     );
     return res;
   }
