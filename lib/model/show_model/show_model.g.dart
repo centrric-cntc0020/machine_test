@@ -31,8 +31,6 @@ _$ShowModelImpl _$$ShowModelImplFromJson(Map<String, dynamic> json) =>
       network: json['network'] == null
           ? null
           : Network.fromJson(json['network'] as Map<String, dynamic>),
-      webChannel: json['webChannel'],
-      dvdCountry: json['dvdCountry'],
       externals: json['externals'] == null
           ? null
           : Externals.fromJson(json['externals'] as Map<String, dynamic>),
@@ -64,8 +62,6 @@ Map<String, dynamic> _$$ShowModelImplToJson(_$ShowModelImpl instance) =>
       'rating': instance.rating,
       'weight': instance.weight,
       'network': instance.network,
-      'webChannel': instance.webChannel,
-      'dvdCountry': instance.dvdCountry,
       'externals': instance.externals,
       'image': instance.image,
       'summary': instance.summary,

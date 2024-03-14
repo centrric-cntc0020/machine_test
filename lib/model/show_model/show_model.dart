@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'externals.dart';
@@ -29,8 +31,8 @@ class ShowModel with _$ShowModel {
     Rating? rating,
     int? weight,
     Network? network,
-    dynamic webChannel,
-    dynamic dvdCountry,
+    // dynamic webChannel,
+    // dynamic dvdCountry,
     Externals? externals,
     Image? image,
     String? summary,

@@ -41,7 +41,9 @@ class HttpService {
       if (SharedStorage().getCachedApiData(key: apiUrl) != null) {
         customPrint(content: 'API_CACHING');
         customPrint(content: apiUrl, name: "Endpoint");
-        customPrint(content: data, name: "Payload");
+        if (data != null) {
+          customPrint(content: data, name: "Payload");
+        }
         return Right(
             jsonDecode(SharedStorage().getCachedApiData(key: apiUrl)!));
       }
@@ -91,19 +93,22 @@ class HttpService {
       customPrint(content: url, name: "Endpoint");
       customPrint(content: data, name: "Payload");
       customPrint(content: response.body, name: "Response");
+      customPrint(content: 'Http service finished1');
+
       if (response.statusCode == HttpStatus.ok ||
           response.statusCode == HttpStatus.created) {
-        if (apiCaching) {
-          SharedStorage().cacheApiData(key: apiUrl, value: response.body);
-        }
+        // if (apiCaching) {
+        //   SharedStorage().cacheApiData(key: apiUrl, value: response.body);
+        // }
 
-        // for app login
-        if (jsonDecode(response.body)["access_token"] != null) {
-          await SecureStorage().writeData(
-            key: "token",
-            value: jsonDecode(response.body)["access_token"],
-          );
-        }
+        // // for app login
+        // if (jsonDecode(response.body)["access_token"] != null) {
+        //   await SecureStorage().writeData(
+        //     key: "token",
+        //     value: jsonDecode(response.body)["access_token"],
+        //   );
+        // }
+        customPrint(content: 'Http service finished2');
         return Right(jsonDecode(response.body));
       } else {
         if (showErrorToast) {

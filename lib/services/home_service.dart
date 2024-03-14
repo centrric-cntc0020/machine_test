@@ -22,7 +22,7 @@ class HomeService implements IHomeService {
       authenticated: false,
       showErrorToast: true,
       method: HttpMethods.get,
-      apiCaching: true,
+      apiCaching: false,
       apiUrl: ApiEndPoints.endPgetAllShows,
     );
     return res;

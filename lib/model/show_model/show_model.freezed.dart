@@ -35,9 +35,9 @@ mixin _$ShowModel {
   Schedule? get schedule => throw _privateConstructorUsedError;
   Rating? get rating => throw _privateConstructorUsedError;
   int? get weight => throw _privateConstructorUsedError;
-  Network? get network => throw _privateConstructorUsedError;
-  dynamic get webChannel => throw _privateConstructorUsedError;
-  dynamic get dvdCountry => throw _privateConstructorUsedError;
+  Network? get network =>
+      throw _privateConstructorUsedError; // dynamic webChannel,
+// dynamic dvdCountry,
   Externals? get externals => throw _privateConstructorUsedError;
   Image? get image => throw _privateConstructorUsedError;
   String? get summary => throw _privateConstructorUsedError;
@@ -73,8 +73,6 @@ abstract class $ShowModelCopyWith<$Res> {
       Rating? rating,
       int? weight,
       Network? network,
-      dynamic webChannel,
-      dynamic dvdCountry,
       Externals? externals,
       Image? image,
       String? summary,
@@ -118,8 +116,6 @@ class _$ShowModelCopyWithImpl<$Res, $Val extends ShowModel>
     Object? rating = freezed,
     Object? weight = freezed,
     Object? network = freezed,
-    Object? webChannel = freezed,
-    Object? dvdCountry = freezed,
     Object? externals = freezed,
     Object? image = freezed,
     Object? summary = freezed,
@@ -191,14 +187,6 @@ class _$ShowModelCopyWithImpl<$Res, $Val extends ShowModel>
           ? _value.network
           : network // ignore: cast_nullable_to_non_nullable
               as Network?,
-      webChannel: freezed == webChannel
-          ? _value.webChannel
-          : webChannel // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      dvdCountry: freezed == dvdCountry
-          ? _value.dvdCountry
-          : dvdCountry // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       externals: freezed == externals
           ? _value.externals
           : externals // ignore: cast_nullable_to_non_nullable
@@ -320,8 +308,6 @@ abstract class _$$ShowModelImplCopyWith<$Res>
       Rating? rating,
       int? weight,
       Network? network,
-      dynamic webChannel,
-      dynamic dvdCountry,
       Externals? externals,
       Image? image,
       String? summary,
@@ -369,8 +355,6 @@ class __$$ShowModelImplCopyWithImpl<$Res>
     Object? rating = freezed,
     Object? weight = freezed,
     Object? network = freezed,
-    Object? webChannel = freezed,
-    Object? dvdCountry = freezed,
     Object? externals = freezed,
     Object? image = freezed,
     Object? summary = freezed,
@@ -442,14 +426,6 @@ class __$$ShowModelImplCopyWithImpl<$Res>
           ? _value.network
           : network // ignore: cast_nullable_to_non_nullable
               as Network?,
-      webChannel: freezed == webChannel
-          ? _value.webChannel
-          : webChannel // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      dvdCountry: freezed == dvdCountry
-          ? _value.dvdCountry
-          : dvdCountry // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       externals: freezed == externals
           ? _value.externals
           : externals // ignore: cast_nullable_to_non_nullable
@@ -494,8 +470,6 @@ class _$ShowModelImpl implements _ShowModel {
       this.rating,
       this.weight,
       this.network,
-      this.webChannel,
-      this.dvdCountry,
       this.externals,
       this.image,
       this.summary,
@@ -546,10 +520,8 @@ class _$ShowModelImpl implements _ShowModel {
   final int? weight;
   @override
   final Network? network;
-  @override
-  final dynamic webChannel;
-  @override
-  final dynamic dvdCountry;
+// dynamic webChannel,
+// dynamic dvdCountry,
   @override
   final Externals? externals;
   @override
@@ -564,7 +536,7 @@ class _$ShowModelImpl implements _ShowModel {
 
   @override
   String toString() {
-    return 'ShowModel(id: $id, url: $url, name: $name, type: $type, language: $language, genres: $genres, status: $status, runtime: $runtime, averageRuntime: $averageRuntime, premiered: $premiered, ended: $ended, officialSite: $officialSite, schedule: $schedule, rating: $rating, weight: $weight, network: $network, webChannel: $webChannel, dvdCountry: $dvdCountry, externals: $externals, image: $image, summary: $summary, updated: $updated, links: $links)';
+    return 'ShowModel(id: $id, url: $url, name: $name, type: $type, language: $language, genres: $genres, status: $status, runtime: $runtime, averageRuntime: $averageRuntime, premiered: $premiered, ended: $ended, officialSite: $officialSite, schedule: $schedule, rating: $rating, weight: $weight, network: $network, externals: $externals, image: $image, summary: $summary, updated: $updated, links: $links)';
   }
 
   @override
@@ -593,10 +565,6 @@ class _$ShowModelImpl implements _ShowModel {
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.network, network) || other.network == network) &&
-            const DeepCollectionEquality()
-                .equals(other.webChannel, webChannel) &&
-            const DeepCollectionEquality()
-                .equals(other.dvdCountry, dvdCountry) &&
             (identical(other.externals, externals) ||
                 other.externals == externals) &&
             (identical(other.image, image) || other.image == image) &&
@@ -625,8 +593,6 @@ class _$ShowModelImpl implements _ShowModel {
         rating,
         weight,
         network,
-        const DeepCollectionEquality().hash(webChannel),
-        const DeepCollectionEquality().hash(dvdCountry),
         externals,
         image,
         summary,
@@ -666,8 +632,6 @@ abstract class _ShowModel implements ShowModel {
       final Rating? rating,
       final int? weight,
       final Network? network,
-      final dynamic webChannel,
-      final dynamic dvdCountry,
       final Externals? externals,
       final Image? image,
       final String? summary,
@@ -709,11 +673,8 @@ abstract class _ShowModel implements ShowModel {
   int? get weight;
   @override
   Network? get network;
-  @override
-  dynamic get webChannel;
-  @override
-  dynamic get dvdCountry;
-  @override
+  @override // dynamic webChannel,
+// dynamic dvdCountry,
   Externals? get externals;
   @override
   Image? get image;

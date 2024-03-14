@@ -32,17 +32,19 @@ abstract class HomeViewModelBase with Store {
   Map<MainFailure, dynamic>? tvShowAllErrRes;
 
   @observable
-  ApiResponse<ShowModel> tvShowAllSuccRes = ApiResponse<ShowModel>();
+  ApiResponse<List<ShowModel>> tvShowAllSuccRes =
+      ApiResponse<List<ShowModel>>();
 
   @action
   Future<void> tvShowAllApi() async {
     tvShowAllSuccRes = tvShowAllSuccRes.copyWith(loading: true);
-
     try {
       await iHomeService
           .getTvShowsAllServiceApi()
           .then((value) => value.fold((l) => tvShowAllErrRes = l, (r) {
-                tvShowAllSuccRes = ApiResponse(data: ShowModel.fromJson(r));
+                tvShowAllSuccRes = ApiResponse(
+                    data: List<ShowModel>.from(
+                        r.map((x) => ShowModel.fromJson(x))));
               }));
     } catch (e) {
       customPrint(content: e, name: 'try catch error');
