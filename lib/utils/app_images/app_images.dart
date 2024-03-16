@@ -10,6 +10,7 @@ class AppImages {
   static String img_live_class = '$imgPath/img_live_class.png';
   static String img_bulb = '$imgPath/img_bulb.png';
   static String img_exame = '$imgPath/img_exame.png';
+  static String img_whatsapp = '$imgPath/img_whatsapp.png';
 
   // svg
 

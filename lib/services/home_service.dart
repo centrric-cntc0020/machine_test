@@ -49,6 +49,7 @@ class HomeService implements IHomeService {
       showErrorToast: true,
       method: HttpMethods.get,
       apiCaching: false,
+      removeBaseUrl: true,
       apiUrl: ApiEndPoints.endPFeedData,
     );
     return res;

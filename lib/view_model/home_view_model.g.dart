@@ -89,6 +89,38 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
     });
   }
 
+  late final _$feedErrResAtom =
+      Atom(name: 'HomeViewModelBase.feedErrRes', context: context);
+
+  @override
+  Map<MainFailure, dynamic>? get feedErrRes {
+    _$feedErrResAtom.reportRead();
+    return super.feedErrRes;
+  }
+
+  @override
+  set feedErrRes(Map<MainFailure, dynamic>? value) {
+    _$feedErrResAtom.reportWrite(value, super.feedErrRes, () {
+      super.feedErrRes = value;
+    });
+  }
+
+  late final _$feedSuccResAtom =
+      Atom(name: 'HomeViewModelBase.feedSuccRes', context: context);
+
+  @override
+  ApiResponse<FeedModel> get feedSuccRes {
+    _$feedSuccResAtom.reportRead();
+    return super.feedSuccRes;
+  }
+
+  @override
+  set feedSuccRes(ApiResponse<FeedModel> value) {
+    _$feedSuccResAtom.reportWrite(value, super.feedSuccRes, () {
+      super.feedSuccRes = value;
+    });
+  }
+
   late final _$homeApiAsyncAction =
       AsyncAction('HomeViewModelBase.homeApi', context: context);
 
@@ -103,6 +135,14 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
   @override
   Future<void> coursesApi() {
     return _$coursesApiAsyncAction.run(() => super.coursesApi());
+  }
+
+  late final _$feedApiAsyncAction =
+      AsyncAction('HomeViewModelBase.feedApi', context: context);
+
+  @override
+  Future<void> feedApi() {
+    return _$feedApiAsyncAction.run(() => super.feedApi());
   }
 
   late final _$HomeViewModelBaseActionController =
@@ -126,7 +166,9 @@ caroselItemIndex: ${caroselItemIndex},
 homeErrRes: ${homeErrRes},
 homeSuccRes: ${homeSuccRes},
 coursesErrRes: ${coursesErrRes},
-coursesSuccRes: ${coursesSuccRes}
+coursesSuccRes: ${coursesSuccRes},
+feedErrRes: ${feedErrRes},
+feedSuccRes: ${feedSuccRes}
     ''';
   }
 }

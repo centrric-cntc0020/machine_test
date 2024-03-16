@@ -2,8 +2,9 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:machine_test/utils/app_colors.dart';
 import 'package:machine_test/utils/app_images/app_images.dart';
-import 'package:machine_test/view/second_task/01_home_page.dart';
-import 'package:machine_test/view/second_task/02_course_page.dart';
+import 'package:machine_test/view/01_home_page.dart';
+import 'package:machine_test/view/02_course_page.dart';
+import 'package:machine_test/view/03_feed_page.dart';
 import 'package:machine_test/view_model/home_view_model.dart';
 import 'package:machine_test/widgets/ww_text.dart';
 import 'package:svg_flutter/svg.dart';
@@ -20,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     vmHome.homeApi();
     vmHome.coursesApi();
+    vmHome.feedApi();
 
     super.initState();
   }
@@ -29,10 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _tabs = [
     const HomePage(),
     const CoursePage(),
-    const Scaffold(
-      body: Center(
-          child: WWText(text: 'Feed Screen', textSize: TextSize.fw700px18)),
-    ),
+    const FeedPage()
     // const SizedBox(),
   ];
 

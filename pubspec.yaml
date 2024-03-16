@@ -33,7 +33,6 @@ dependencies:
   get_it: ^7.2.0
   dartz: ^0.10.1
   injectable: ^2.1.0
-  flutter_screenutil: ^5.8.4
 
 
 
@@ -45,6 +44,8 @@ dependencies:
   svg_flutter: ^0.0.1
   carousel_slider: ^4.2.1
   animations: ^2.0.8
+  flutter_html: ^3.0.0-beta.2
+  flutter_screenutil: ^5.9.0
 
 
 
