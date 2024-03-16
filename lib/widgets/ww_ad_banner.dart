@@ -47,7 +47,7 @@ class WWadBanner extends StatelessWidget {
                       decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       child: CachedNetworkImage(
-                        imageUrl: images![itemIndex ?? 0].image ?? '',
+                        imageUrl: images?[itemIndex ?? 0].image ?? '',
                         fit: BoxFit.fitHeight,
                         width: ScreenUtil().screenWidth,
                       ),

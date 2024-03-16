@@ -4,6 +4,8 @@ import 'package:machine_test/utils/app_colors.dart';
 import 'package:machine_test/utils/app_images/app_images.dart';
 import 'package:machine_test/view/second_task/01_home_page.dart';
 import 'package:machine_test/view/second_task/02_course_page.dart';
+import 'package:machine_test/view_model/home_view_model.dart';
+import 'package:machine_test/widgets/ww_text.dart';
 import 'package:svg_flutter/svg.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,13 +16,24 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  @override
+  void initState() {
+    vmHome.homeApi();
+    vmHome.coursesApi();
+
+    super.initState();
+  }
+
   int _currentIndex = 0;
 
   final List<Widget> _tabs = [
     const HomePage(),
     const CoursePage(),
-    const SizedBox(),
-    const SizedBox(),
+    const Scaffold(
+      body: Center(
+          child: WWText(text: 'Feed Screen', textSize: TextSize.fw700px18)),
+    ),
+    // const SizedBox(),
   ];
 
   @override
@@ -36,6 +49,7 @@ class _MainScreenState extends State<MainScreen> {
         return false;
       },
       child: Scaffold(
+        backgroundColor: cBackgroundColor,
         body: PageTransitionAnimation(currentIndex: _currentIndex, tabs: _tabs),
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: cBlack,

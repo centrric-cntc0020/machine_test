@@ -11,6 +11,7 @@ const cGreen = Color(0xFF00B649);
 const cRed = Color(0xFFC8102E);
 const cMediumGrey = Color(0xFFE7E7E7);
 const cBlue = Color(0xFF256EEE);
+const cLightBlue = Color(0xFFEFFFFB);
 
 //  Color(0xFFEA5F6E);
 const cWhite = Colors.white;

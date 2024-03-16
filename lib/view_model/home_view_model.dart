@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:injectable/injectable.dart';
 import 'package:machine_test/model/01_common_models/api_response_model/api_response_model.dart';
 import 'package:machine_test/model/home_model/home_model.dart';
+import 'package:machine_test/model/my_courses_model/my_courses_model.dart';
 import 'package:machine_test/model/person_model/person_model.dart';
 import 'package:machine_test/model/show_model/show_model.dart';
 import 'package:machine_test/services/home_service.dart';
@@ -121,6 +122,36 @@ abstract class HomeViewModelBase with Store {
       homeSuccRes = homeSuccRes.copyWith(loading: false);
     }
     homeSuccRes = homeSuccRes.copyWith(loading: false);
+  }
+
+//     _  _       _  _       _  _       _  _       _  _       _  _       _  _       _  _
+//   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_
+//  |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _|
+//  |_      _| |_      _| |_      _| |_      _| |_      _| |_      _| |_      _| |_      _|
+//    |_||_|     |_||_|     |_||_|     |_||_|     |_||_|     |_||_|     |_||_|     |_||_|
+
+  @observable
+  Map<MainFailure, dynamic>? coursesErrRes;
+
+  @observable
+  ApiResponse<MyCoursesModel> coursesSuccRes = ApiResponse<MyCoursesModel>();
+
+  @action
+  Future<void> coursesApi() async {
+    coursesSuccRes = coursesSuccRes.copyWith(loading: true);
+    try {
+      await iHomeService
+          .myCourseServiceApi()
+          .then((value) => value.fold((l) => coursesErrRes = l, (r) {
+                log(r.toString());
+                customPrint(content: 'show correct api');
+                coursesSuccRes = ApiResponse(data: MyCoursesModel.fromJson(r));
+              }));
+    } catch (e) {
+      customPrint(content: e, name: 'try catch error');
+      coursesSuccRes = coursesSuccRes.copyWith(loading: false);
+    }
+    coursesSuccRes = coursesSuccRes.copyWith(loading: false);
   }
 
 //     _  _       _  _       _  _       _  _       _  _       _  _       _  _       _  _

@@ -12,7 +12,7 @@ abstract class IHomeService {
 
   Future<Either<Map<MainFailure, dynamic>, dynamic>> homeServiceApi();
 
-  Future<Either<Map<MainFailure, dynamic>, dynamic>> myCourseServiceApi(int id);
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> myCourseServiceApi();
 }
 
 @LazySingleton(as: IHomeService)
@@ -57,8 +57,8 @@ class HomeService implements IHomeService {
   }
 
   @override
-  Future<Either<Map<MainFailure, dynamic>, dynamic>> myCourseServiceApi(
-      int id) async {
+  Future<Either<Map<MainFailure, dynamic>, dynamic>>
+      myCourseServiceApi() async {
     final res = await httpService.request(
       authenticated: false,
       showErrorToast: true,
