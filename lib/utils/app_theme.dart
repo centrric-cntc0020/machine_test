@@ -16,6 +16,6 @@ abstract class AppTheme {
       secondary: cSecondaryColor,
       background: cBackgroundColor,
     ),
-    textTheme: GoogleFonts.manropeTextTheme(),
+    textTheme: GoogleFonts.poppinsTextTheme(),
   );
 }

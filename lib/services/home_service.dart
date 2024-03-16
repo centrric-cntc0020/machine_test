@@ -9,6 +9,10 @@ abstract class IHomeService {
   Future<Either<Map<MainFailure, dynamic>, dynamic>> getTvShowsAllServiceApi();
 
   Future<Either<Map<MainFailure, dynamic>, dynamic>> getCastServiceApi(int id);
+
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> homeServiceApi();
+
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> myCourseServiceApi(int id);
 }
 
 @LazySingleton(as: IHomeService)
@@ -19,12 +23,11 @@ class HomeService implements IHomeService {
   Future<Either<Map<MainFailure, dynamic>, dynamic>>
       getTvShowsAllServiceApi() async {
     final res = await httpService.request(
-      authenticated: false,
-      showErrorToast: true,
-      method: HttpMethods.get,
-      apiCaching: false,
-      apiUrl: ApiEndPoints.endPgetAllShows,
-    );
+        authenticated: false,
+        showErrorToast: true,
+        method: HttpMethods.get,
+        apiCaching: false,
+        apiUrl: '');
     return res;
   }
 
@@ -35,8 +38,33 @@ class HomeService implements IHomeService {
       authenticated: false,
       showErrorToast: true,
       method: HttpMethods.get,
-      apiCaching: true,
-      apiUrl: '${ApiEndPoints.endPgetAllShows}/$id/cast',
+      apiCaching: false,
+      apiUrl: '',
+    );
+    return res;
+  }
+
+  @override
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> homeServiceApi() async {
+    final res = await httpService.request(
+      authenticated: false,
+      showErrorToast: true,
+      method: HttpMethods.get,
+      apiCaching: false,
+      apiUrl: ApiEndPoints.endPHomePage,
+    );
+    return res;
+  }
+
+  @override
+  Future<Either<Map<MainFailure, dynamic>, dynamic>> myCourseServiceApi(
+      int id) async {
+    final res = await httpService.request(
+      authenticated: false,
+      showErrorToast: true,
+      method: HttpMethods.get,
+      apiCaching: false,
+      apiUrl: ApiEndPoints.endPMyCourseData,
     );
     return res;
   }

@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:injectable/injectable.dart';
 import 'package:machine_test/model/01_common_models/api_response_model/api_response_model.dart';
+import 'package:machine_test/model/home_model/home_model.dart';
 import 'package:machine_test/model/person_model/person_model.dart';
 import 'package:machine_test/model/show_model/show_model.dart';
 import 'package:machine_test/services/home_service.dart';
@@ -22,6 +25,12 @@ abstract class HomeViewModelBase with Store {
   final IHomeService iHomeService;
 
   HomeViewModelBase({required this.iHomeService});
+
+  @observable
+  int caroselItemIndex = 0;
+
+  @action
+  caroselDotsUpdateFun(int index) => caroselItemIndex = index;
 
   //      _      ____    ___      ____      _      _       _       ____
 //     / \    |  _ \  |_ _|    / ___|    / \    | |     | |     / ___|
@@ -82,6 +91,36 @@ abstract class HomeViewModelBase with Store {
       castSuccRes = castSuccRes.copyWith(loading: false);
     }
     castSuccRes = castSuccRes.copyWith(loading: false);
+  }
+
+//     _  _       _  _       _  _       _  _       _  _       _  _       _  _       _  _
+//   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_   _| || |_
+//  |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _| |_  ..  _|
+//  |_      _| |_      _| |_      _| |_      _| |_      _| |_      _| |_      _| |_      _|
+//    |_||_|     |_||_|     |_||_|     |_||_|     |_||_|     |_||_|     |_||_|     |_||_|
+
+  @observable
+  Map<MainFailure, dynamic>? homeErrRes;
+
+  @observable
+  ApiResponse<HomeModel> homeSuccRes = ApiResponse<HomeModel>();
+
+  @action
+  Future<void> homeApi() async {
+    homeSuccRes = homeSuccRes.copyWith(loading: true);
+    try {
+      await iHomeService
+          .homeServiceApi()
+          .then((value) => value.fold((l) => homeErrRes = l, (r) {
+                log(r.toString());
+                customPrint(content: 'show correct api');
+                homeSuccRes = ApiResponse(data: HomeModel.fromJson(r));
+              }));
+    } catch (e) {
+      customPrint(content: e, name: 'try catch error');
+      homeSuccRes = homeSuccRes.copyWith(loading: false);
+    }
+    homeSuccRes = homeSuccRes.copyWith(loading: false);
   }
 
 //     _  _       _  _       _  _       _  _       _  _       _  _       _  _       _  _

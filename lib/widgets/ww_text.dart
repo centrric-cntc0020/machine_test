@@ -13,6 +13,7 @@ enum TextSize {
   fw600px12,
   fw600px14,
   fw600px22,
+  fw600px24,
   fw500px16,
   fw500px12,
   fw500px13,
@@ -61,130 +62,83 @@ class WWText extends StatelessWidget {
   TextStyle customStyle(TextSize textSize) {
     switch (textSize) {
       case TextSize.fw800px30:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 30.sp, fontWeight: FontWeight.w800);
 
       case TextSize.fw800px20:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 20.sp, fontWeight: FontWeight.w800);
 
       case TextSize.fw800px16:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 16.sp, fontWeight: FontWeight.w800);
 
       case TextSize.fw800px12:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 12.sp, fontWeight: FontWeight.w800);
 
       case TextSize.fw700px18:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 18.sp, fontWeight: FontWeight.w700);
 
       case TextSize.fw700px14:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 14.sp, fontWeight: FontWeight.w700);
 
       case TextSize.fw700px10:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 10.sp, fontWeight: FontWeight.w700);
 
       case TextSize.fw600px12:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 12.sp, fontWeight: FontWeight.w600);
 
       case TextSize.fw600px14:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 14.sp, fontWeight: FontWeight.w600);
 
       case TextSize.fw600px22:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 22.sp, fontWeight: FontWeight.w600);
 
+      case TextSize.fw600px24:
+        return GoogleFonts.poppins(
+            fontSize: 24.sp, fontWeight: FontWeight.w600);
+
       case TextSize.fw500px16:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 16.sp, fontWeight: FontWeight.w500);
 
       case TextSize.fw500px12:
         return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500);
 
       case TextSize.fw500px13:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 13.sp, fontWeight: FontWeight.w500);
 
       case TextSize.fw500px10:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 10.sp, fontWeight: FontWeight.w500);
 
       case TextSize.fw400px12:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 12.sp, fontWeight: FontWeight.w400);
 
       case TextSize.fw400px14:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 14.sp, fontWeight: FontWeight.w400);
 
       case TextSize.fw300px18:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 18.sp, fontWeight: FontWeight.w300);
 
       case TextSize.fw300px13:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 13.sp, fontWeight: FontWeight.w300);
 
       default:
-        return GoogleFonts.manrope(
+        return GoogleFonts.poppins(
             fontSize: 12.sp, fontWeight: FontWeight.w400);
     }
   }
 }
-
-/*
-
-FONT LARGE
---------------
-font-family: Manrope;
-font-size: 30px;
-font-weight: 800;
-line-height: 30px;
-letter-spacing: -0.02em;
-text-align: left;
-
-
-font-family: Manrope;
-font-size: 12px;
-font-weight: 500;
-line-height: 12px;
-letter-spacing: 0em;
-text-align: left;
-
-
-font-family: Manrope;
-font-size: 16px;
-font-weight: 500;
-line-height: 22px;
-letter-spacing: 0em;
-text-align: left;
-
-
-
-font-family: Manrope;
-font-size: 12px;
-font-weight: 600;
-line-height: 21px;
-letter-spacing: 0em;
-text-align: left;
-
-
-
-font-family: Manrope;
-font-size: 12px;
-font-weight: 400;
-line-height: 21px;
-letter-spacing: 0em;
-text-align: left;
-
-
-
-
-
-*/

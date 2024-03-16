@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:machine_test/utils/app_colors.dart';
 import 'package:machine_test/utils/constant.dart';
-import 'package:machine_test/view/detail_page.dart';
+import 'package:machine_test/utils/custom_print.dart';
+import 'package:machine_test/view/first_task/detail_page.dart';
 import 'package:machine_test/view_model/home_view_model.dart';
 import 'package:machine_test/widgets/01_widgets.dart';
 import 'package:machine_test/widgets/ww_text.dart';
@@ -20,7 +21,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    vmHome.tvShowAllApi();
+    customPrint(content: 'show correct api 1');
+
+    vmHome.homeApi();
     super.initState();
   }
 
@@ -60,24 +63,24 @@ class HomeScreenStateless extends StatelessWidget {
           crossAxisSpacing: 10.0,
           mainAxisSpacing: 10.0,
         ),
-        itemCount: vmHome.tvShowAllSuccRes.data?.length ?? 0,
+        itemCount: vmHome.homeSuccRes.data?.data?.topCourses?.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
-          var data = vmHome.tvShowAllSuccRes.data![index];
-          return vmHome.tvShowAllSuccRes.loading == true
+          var data = vmHome.homeSuccRes.data!.data!.topCourses![index];
+          return vmHome.homeSuccRes.loading == true
               ? const Center(
                   child: CupertinoActivityIndicator(
                   radius: 50,
-                  color: cWhite,
+                  // color: cWhite,
                 ))
               : InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MovieDetailPage(data: data)),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => MovieDetailPage(data: data)),
+                    // );
 
-                    vmHome.castAllApi(data.id!);
+                    // vmHome.castAllApi(data.id!);
                   },
                   child: DecoratedBox(
                     decoration: BoxDecoration(
@@ -97,7 +100,7 @@ class HomeScreenStateless extends StatelessWidget {
                               child: CachedNetworkImage(
                                   width: double.infinity,
                                   fit: BoxFit.cover,
-                                  imageUrl: data.image?.medium ?? ''),
+                                  imageUrl: data.thumbnail ?? ''),
                             ),
                           ),
                         ),
