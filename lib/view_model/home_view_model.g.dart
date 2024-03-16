@@ -25,70 +25,6 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
     });
   }
 
-  late final _$tvShowAllErrResAtom =
-      Atom(name: 'HomeViewModelBase.tvShowAllErrRes', context: context);
-
-  @override
-  Map<MainFailure, dynamic>? get tvShowAllErrRes {
-    _$tvShowAllErrResAtom.reportRead();
-    return super.tvShowAllErrRes;
-  }
-
-  @override
-  set tvShowAllErrRes(Map<MainFailure, dynamic>? value) {
-    _$tvShowAllErrResAtom.reportWrite(value, super.tvShowAllErrRes, () {
-      super.tvShowAllErrRes = value;
-    });
-  }
-
-  late final _$tvShowAllSuccResAtom =
-      Atom(name: 'HomeViewModelBase.tvShowAllSuccRes', context: context);
-
-  @override
-  ApiResponse<List<ShowModel>> get tvShowAllSuccRes {
-    _$tvShowAllSuccResAtom.reportRead();
-    return super.tvShowAllSuccRes;
-  }
-
-  @override
-  set tvShowAllSuccRes(ApiResponse<List<ShowModel>> value) {
-    _$tvShowAllSuccResAtom.reportWrite(value, super.tvShowAllSuccRes, () {
-      super.tvShowAllSuccRes = value;
-    });
-  }
-
-  late final _$castErrResAtom =
-      Atom(name: 'HomeViewModelBase.castErrRes', context: context);
-
-  @override
-  Map<MainFailure, dynamic>? get castErrRes {
-    _$castErrResAtom.reportRead();
-    return super.castErrRes;
-  }
-
-  @override
-  set castErrRes(Map<MainFailure, dynamic>? value) {
-    _$castErrResAtom.reportWrite(value, super.castErrRes, () {
-      super.castErrRes = value;
-    });
-  }
-
-  late final _$castSuccResAtom =
-      Atom(name: 'HomeViewModelBase.castSuccRes', context: context);
-
-  @override
-  ApiResponse<List<PersonModel>> get castSuccRes {
-    _$castSuccResAtom.reportRead();
-    return super.castSuccRes;
-  }
-
-  @override
-  set castSuccRes(ApiResponse<List<PersonModel>> value) {
-    _$castSuccResAtom.reportWrite(value, super.castSuccRes, () {
-      super.castSuccRes = value;
-    });
-  }
-
   late final _$homeErrResAtom =
       Atom(name: 'HomeViewModelBase.homeErrRes', context: context);
 
@@ -121,20 +57,36 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
     });
   }
 
-  late final _$tvShowAllApiAsyncAction =
-      AsyncAction('HomeViewModelBase.tvShowAllApi', context: context);
+  late final _$coursesErrResAtom =
+      Atom(name: 'HomeViewModelBase.coursesErrRes', context: context);
 
   @override
-  Future<void> tvShowAllApi() {
-    return _$tvShowAllApiAsyncAction.run(() => super.tvShowAllApi());
+  Map<MainFailure, dynamic>? get coursesErrRes {
+    _$coursesErrResAtom.reportRead();
+    return super.coursesErrRes;
   }
 
-  late final _$castAllApiAsyncAction =
-      AsyncAction('HomeViewModelBase.castAllApi', context: context);
+  @override
+  set coursesErrRes(Map<MainFailure, dynamic>? value) {
+    _$coursesErrResAtom.reportWrite(value, super.coursesErrRes, () {
+      super.coursesErrRes = value;
+    });
+  }
+
+  late final _$coursesSuccResAtom =
+      Atom(name: 'HomeViewModelBase.coursesSuccRes', context: context);
 
   @override
-  Future<void> castAllApi(int id) {
-    return _$castAllApiAsyncAction.run(() => super.castAllApi(id));
+  ApiResponse<MyCoursesModel> get coursesSuccRes {
+    _$coursesSuccResAtom.reportRead();
+    return super.coursesSuccRes;
+  }
+
+  @override
+  set coursesSuccRes(ApiResponse<MyCoursesModel> value) {
+    _$coursesSuccResAtom.reportWrite(value, super.coursesSuccRes, () {
+      super.coursesSuccRes = value;
+    });
   }
 
   late final _$homeApiAsyncAction =
@@ -143,6 +95,14 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
   @override
   Future<void> homeApi() {
     return _$homeApiAsyncAction.run(() => super.homeApi());
+  }
+
+  late final _$coursesApiAsyncAction =
+      AsyncAction('HomeViewModelBase.coursesApi', context: context);
+
+  @override
+  Future<void> coursesApi() {
+    return _$coursesApiAsyncAction.run(() => super.coursesApi());
   }
 
   late final _$HomeViewModelBaseActionController =
@@ -163,12 +123,10 @@ mixin _$HomeViewModel on HomeViewModelBase, Store {
   String toString() {
     return '''
 caroselItemIndex: ${caroselItemIndex},
-tvShowAllErrRes: ${tvShowAllErrRes},
-tvShowAllSuccRes: ${tvShowAllSuccRes},
-castErrRes: ${castErrRes},
-castSuccRes: ${castSuccRes},
 homeErrRes: ${homeErrRes},
-homeSuccRes: ${homeSuccRes}
+homeSuccRes: ${homeSuccRes},
+coursesErrRes: ${coursesErrRes},
+coursesSuccRes: ${coursesSuccRes}
     ''';
   }
 }

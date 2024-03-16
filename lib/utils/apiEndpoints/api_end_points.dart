@@ -5,4 +5,5 @@ class ApiEndPoints {
   static const String baseUrl = 'https://trogon.info/tutorpro/lms_demo/api';
   static const String endPHomePage = 'home_page_data?auth_token=$token';
   static const String endPMyCourseData = 'my_course_data?auth_token=$token';
+  static const String endPFeedData = 'feed?auth_token=$token';
 }

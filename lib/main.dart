@@ -3,9 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:machine_test/utils/app_theme.dart';
 import 'package:machine_test/utils/injection/injection.dart';
 import 'package:machine_test/utils/services/secure_storage.dart';
-import 'package:machine_test/view/first_task/home_screen.dart';
-import 'package:machine_test/view/second_task/00_main_screen.dart';
-import 'package:machine_test/view/second_task/01_home_page.dart';
+import 'package:machine_test/view/00_main_screen.dart';
+import 'package:machine_test/view/01_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
