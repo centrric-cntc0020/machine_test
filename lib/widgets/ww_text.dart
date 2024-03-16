@@ -12,6 +12,7 @@ enum TextSize {
   fw700px10,
   fw600px12,
   fw600px14,
+  fw600px18,
   fw600px22,
   fw600px24,
   fw500px16,
@@ -40,7 +41,7 @@ class WWText extends StatelessWidget {
       this.maxLines,
       this.overflow,
       required this.textSize,
-      this.textColor = Colors.white,
+      this.textColor = Colors.black,
       this.textDecoration = TextDecoration.none,
       this.height});
 
@@ -96,6 +97,10 @@ class WWText extends StatelessWidget {
       case TextSize.fw600px14:
         return GoogleFonts.poppins(
             fontSize: 14.sp, fontWeight: FontWeight.w600);
+
+      case TextSize.fw600px18:
+        return GoogleFonts.poppins(
+            fontSize: 18.sp, fontWeight: FontWeight.w600);
 
       case TextSize.fw600px22:
         return GoogleFonts.poppins(

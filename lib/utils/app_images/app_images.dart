@@ -5,6 +5,7 @@ class AppImages {
   // images
 
   static String caroselImage = '$imgPath/img_carosel.png';
+  static String img_book = '$imgPath/img_book.png';
 
   // svg
 
