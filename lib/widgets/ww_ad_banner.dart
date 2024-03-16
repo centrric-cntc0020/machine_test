@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:machine_test/model/home_model/ad_banner.dart';
 import 'package:machine_test/utils/app_colors.dart';
 import 'package:machine_test/utils/app_images/app_images.dart';
 import 'package:machine_test/view_model/home_view_model.dart';
@@ -15,12 +17,13 @@ List<String> listOfPoster = [
 ];
 
 class WWadBanner extends StatelessWidget {
-  const WWadBanner({super.key});
+  final List<AdBanner>? images;
+  const WWadBanner({super.key, required this.images});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 190.h,
+      height: 160.h,
       width: ScreenUtil().screenWidth,
       child: Stack(
         alignment: Alignment.bottomCenter,
@@ -28,21 +31,26 @@ class WWadBanner extends StatelessWidget {
           SizedBox(
             width: ScreenUtil().screenWidth,
             child: CarouselSlider.builder(
-                itemCount: listOfPoster.length,
+                itemCount: images?.length ?? 0,
                 options: CarouselOptions(
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 6),
                   viewportFraction: 1,
                 ),
                 itemBuilder:
-                    (BuildContext context, int itemIndex, int pageViewIndex) {
-                  vmHome.caroselDotsUpdateFun(itemIndex);
+                    (BuildContext context, int? itemIndex, int pageViewIndex) {
+                  vmHome.caroselDotsUpdateFun(itemIndex ?? 0);
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 05),
-                    child: Image.asset(
-                      listOfPoster[itemIndex],
-                      fit: BoxFit.fitWidth,
-                      width: ScreenUtil().screenWidth,
+                    child: Container(
+                      clipBehavior: Clip.antiAlias,
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: CachedNetworkImage(
+                        imageUrl: images![itemIndex ?? 0].image ?? '',
+                        fit: BoxFit.fitHeight,
+                        width: ScreenUtil().screenWidth,
+                      ),
                     ),
                   );
                 }),
@@ -52,7 +60,7 @@ class WWadBanner extends StatelessWidget {
               bottom: 15,
               child: Row(
                 children: [
-                  for (int i = 0; i < 5; i++)
+                  for (int i = 0; i < (images?.length ?? 0); i++)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 2),
                       child: DecoratedBox(
@@ -60,7 +68,7 @@ class WWadBanner extends StatelessWidget {
                               shape: BoxShape.circle,
                               color: vmHome.caroselItemIndex == i
                                   ? cPrimaryColor
-                                  : cWhite)),
+                                  : cBlack)),
                     ),
                 ],
               ),
@@ -69,27 +77,5 @@ class WWadBanner extends StatelessWidget {
         ],
       ),
     );
-
-    //  CarouselSlider(
-    //   options: CarouselOptions(
-    //     autoPlay: true,
-    //     autoPlayInterval: const Duration(seconds: 6),
-    //     viewportFraction: 1,
-    //   ),
-    //   items: [
-    //     AppImages.imgPoster1,
-    //     AppImages.imgPoster1,
-    //     AppImages.imgPoster1,
-    //     AppImages.imgPoster1,
-    //     AppImages.imgPoster1
-    //   ].map((i) {
-    //     return Builder(
-
-    //       builder: (BuildContext context) {
-    //         return Image.asset(i);
-    //       },
-    //     );
-    //   }).toList(),
-    // );
   }
 }
